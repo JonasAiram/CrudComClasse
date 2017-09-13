@@ -83,12 +83,47 @@ public class ContatoController extends DataBaseAdapter{
 
     public Contato buscarPeloID(int contatoID){
 
-        return null;
+        Contato contato = new Contato();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String sql = "SELECT * FROM contato WHERE id = " + contatoID;
+
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if (cursor.moveToFirst()){
+
+            String nome = cursor.getString(cursor.getColumnIndex("nome"));
+            String email = cursor.getString(cursor.getColumnIndex("email"));
+
+            contato = new Contato();
+
+            contato.setId(contatoID);
+            contato.setNome(nome);
+            contato.setEmail(email);
+        }
+
+        return contato;
     }
 
     public boolean updade(Contato contato){
 
-        return true;
+        ContentValues values = new ContentValues();
+
+        values.put("nome", contato.getNome());
+        values.put("email", contato.getEmail());
+
+        String where = "id = ?";
+
+        String[] whererArgs = { Integer.toString(contato.getId())};
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        boolean isupdate = db.update("contato", values, where, whererArgs) > 0 ;
+
+        db.close();
+
+        return isupdate;
     }
 
     public boolean delete(int contatoID){

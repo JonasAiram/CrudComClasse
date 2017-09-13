@@ -23,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
         contadorDeRegistros();
         atualizarListaDeContatos();
+
+        new ContatoController(this).buscarPeloID(10);
     }
 
     public void contadorDeRegistros(){
