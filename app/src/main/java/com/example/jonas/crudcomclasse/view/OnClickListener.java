@@ -1,4 +1,4 @@
-package com.example.jonas.crudcomclasse;
+package com.example.jonas.crudcomclasse.view;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -8,11 +8,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.jonas.crudcomclasse.R;
+import com.example.jonas.crudcomclasse.controller.ContatoController;
+import com.example.jonas.crudcomclasse.model.Contato;
+
 /**
  * Created by jonas on 29/08/2017.
  */
 
-public class CreateContatoOnClickListener implements View.OnClickListener{
+public class OnClickListener implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {

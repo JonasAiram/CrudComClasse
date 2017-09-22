@@ -1,4 +1,4 @@
-package com.example.jonas.crudcomclasse;
+package com.example.jonas.crudcomclasse.adapter;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

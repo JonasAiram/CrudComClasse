@@ -1,9 +1,12 @@
-package com.example.jonas.crudcomclasse;
+package com.example.jonas.crudcomclasse.controller;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+
+import com.example.jonas.crudcomclasse.adapter.DataBaseAdapter;
+import com.example.jonas.crudcomclasse.model.Contato;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +15,7 @@ import java.util.List;
  * Created by jonas on 29/08/2017.
  */
 
-public class ContatoController extends DataBaseAdapter{
+public class ContatoController extends DataBaseAdapter {
 
     public ContatoController(Context context){
         // Integração com Banco de Dados
@@ -127,7 +130,14 @@ public class ContatoController extends DataBaseAdapter{
     }
 
     public boolean delete(int contatoID){
-        return true;
+
+        boolean isDeletado = false;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        isDeletado = db.delete("contato", "id ='" + contatoID + "'",null) > 0;
+        db.close();
+
+        return isDeletado;
     }
 
 }

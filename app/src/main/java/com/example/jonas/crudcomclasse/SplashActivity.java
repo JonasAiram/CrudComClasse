@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.jonas.crudcomclasse.view.MainActivity;
+
 public class SplashActivity extends AppCompatActivity {
 
     private static final int SPLASH_TIME_OUT = 3000;

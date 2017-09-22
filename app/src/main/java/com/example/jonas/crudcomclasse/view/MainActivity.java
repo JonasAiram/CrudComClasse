@@ -1,11 +1,14 @@
-package com.example.jonas.crudcomclasse;
+package com.example.jonas.crudcomclasse.view;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.example.jonas.crudcomclasse.R;
+import com.example.jonas.crudcomclasse.controller.ContatoController;
+import com.example.jonas.crudcomclasse.model.Contato;
 
 import java.util.List;
 
@@ -19,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         btnCriarContato = (Button) findViewById(R.id.btnCriarContato);
-        btnCriarContato.setOnClickListener(new CreateContatoOnClickListener());
+        btnCriarContato.setOnClickListener(new OnClickListener());
 
         contadorDeRegistros();
         atualizarListaDeContatos();
@@ -73,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 textViewContatoItem.setTag(Integer.toString(id));
 
                 linearLayoutRecords.addView(textViewContatoItem);
-                textViewContatoItem.setOnLongClickListener(new RetrieveOnLongClickListener());
+                textViewContatoItem.setOnLongClickListener(new OnLongClickListener());
 
             }
 

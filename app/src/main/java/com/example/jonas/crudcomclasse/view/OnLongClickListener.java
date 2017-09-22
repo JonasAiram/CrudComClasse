@@ -1,19 +1,22 @@
-package com.example.jonas.crudcomclasse;
+package com.example.jonas.crudcomclasse.view;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.jonas.crudcomclasse.R;
+import com.example.jonas.crudcomclasse.controller.ContatoController;
+import com.example.jonas.crudcomclasse.model.Contato;
+
 /**
  * Created by jonas on 29/08/2017.
  */
 
-public class RetrieveOnLongClickListener implements View.OnLongClickListener{
+public class OnLongClickListener implements View.OnLongClickListener{
 
     Context context;
     String id;
@@ -37,9 +40,19 @@ public class RetrieveOnLongClickListener implements View.OnLongClickListener{
 
                         }else if (item == 1) {
                             //DELETAR
+                            boolean isDeletouComSucesso = new ContatoController(context).delete(Integer.parseInt(id));
 
+                            if (isDeletouComSucesso){
+                                Toast.makeText(context, "Contato deletado.", Toast.LENGTH_SHORT).show();
+
+                                ((MainActivity) context).contadorDeRegistros();
+                                ((MainActivity) context).atualizarListaDeContatos();
+
+                            }else{
+                                Toast.makeText(context, "Erro ao deletar o contato.", Toast.LENGTH_SHORT).show();
+                            }
                         }
-
+                        dialogInterface.dismiss();
                     }
                 }).show();
 
